@@ -282,6 +282,112 @@
             min-height: 150px;
         }
 
+        /* Estilos específicos para a seção Dados do Aluno */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background-color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .form-select:disabled {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .info-display {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #155724;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-display.empty {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .preview-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #28a745;
+        }
+
+        .preview-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .preview-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .preview-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .preview-label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .preview-value {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
         .navigation-buttons {
             display: flex;
             justify-content: space-between;
@@ -444,41 +550,6 @@
             transform: scale(1.3);
         }
 
-        /* Estilos para campos de seleção */
-        .select-field {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            background: white;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-        }
-
-        .select-field:focus {
-            outline: none;
-            border-color: #4facfe;
-            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
-        }
-
-        .field-group {
-            margin-bottom: 20px;
-        }
-
-        .field-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 0.95rem;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -522,6 +593,14 @@
 
             .section-icon {
                 margin-right: 0;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+            
+            .preview-info {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -595,11 +674,11 @@
                     </div>
 
                     <!-- Seleção da Série -->
-                    <div class="question-card">
-                        <label class="question-title" for="serie">
+                    <div class="form-group">
+                        <label class="form-label" for="serie">
                             Série do seu filho(a) <span class="required-indicator">*</span>
                         </label>
-                        <select id="serie" name="serie" class="select-field" required>
+                        <select id="serie" name="serie" class="form-select" required>
                             <option value="">Selecione a série...</option>
                             <option value="maternal2">Maternal II</option>
                             <option value="maternal3">Maternal III</option>
@@ -618,24 +697,24 @@
                     </div>
 
                     <!-- Seleção de Turma/Turno (aparece dinamicamente) -->
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 250px;">
-                            <div class="question-card" id="turmaGroup" style="display: none;">
-                                <label class="question-title" for="turma" id="turmaLabel">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" id="turmaGroup" style="display: none;">
+                                <label class="form-label" for="turma" id="turmaLabel">
                                     Turma <span class="required-indicator">*</span>
                                 </label>
-                                <select id="turma" name="turma" class="select-field">
+                                <select id="turma" name="turma" class="form-select">
                                     <option value="">Selecione...</option>
                                 </select>
                             </div>
                         </div>
                         
-                        <div style="flex: 1; min-width: 250px;">
-                            <div class="question-card" id="turnoGroup" style="display: none;">
-                                <label class="question-title" for="turno">
+                        <div class="col">
+                            <div class="form-group" id="turnoGroup" style="display: none;">
+                                <label class="form-label" for="turno">
                                     Turno <span class="required-indicator">*</span>
                                 </label>
-                                <select id="turno" name="turno" class="select-field">
+                                <select id="turno" name="turno" class="form-select">
                                     <option value="">Selecione...</option>
                                 </select>
                             </div>
@@ -643,32 +722,32 @@
                     </div>
 
                     <!-- Exibição do Professor (automático) -->
-                    <div class="question-card">
-                        <label class="question-title">Professor(a) Responsável</label>
-                        <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 12px 15px; margin-top: 10px; min-height: 45px; display: flex; align-items: center; color: #6c757d; font-style: italic;" id="professorInfo">
+                    <div class="form-group">
+                        <label class="form-label">Professor(a) Responsável</label>
+                        <div class="info-display empty" id="professorInfo">
                             Será preenchido automaticamente após selecionar série e turma
                         </div>
                     </div>
 
                     <!-- Card de Preview dos Dados -->
-                    <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; margin-top: 30px; border-left: 4px solid #28a745; display: none;" id="previewCard">
-                        <div style="font-size: 1.1rem; font-weight: 600; color: #28a745; margin-bottom: 15px;">📋 Resumo dos Dados do Aluno</div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e9ecef;">
-                                <span style="font-weight: 600; color: #495057;">Série:</span>
-                                <span style="color: #2c3e50; font-weight: 500;" id="previewSerie">-</span>
+                    <div class="preview-card" id="previewCard" style="display: none;">
+                        <div class="preview-title">📋 Resumo dos Dados do Aluno</div>
+                        <div class="preview-info">
+                            <div class="preview-item">
+                                <span class="preview-label">Série:</span>
+                                <span class="preview-value" id="previewSerie">-</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e9ecef;">
-                                <span style="font-weight: 600; color: #495057;">Turma:</span>
-                                <span style="color: #2c3e50; font-weight: 500;" id="previewTurma">-</span>
+                            <div class="preview-item">
+                                <span class="preview-label">Turma:</span>
+                                <span class="preview-value" id="previewTurma">-</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e9ecef;">
-                                <span style="font-weight: 600; color: #495057;">Turno:</span>
-                                <span style="color: #2c3e50; font-weight: 500;" id="previewTurno">-</span>
+                            <div class="preview-item">
+                                <span class="preview-label">Turno:</span>
+                                <span class="preview-value" id="previewTurno">-</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e9ecef;">
-                                <span style="font-weight: 600; color: #495057;">Professor(a):</span>
-                                <span style="color: #2c3e50; font-weight: 500;" id="previewProfessor">-</span>
+                            <div class="preview-item">
+                                <span class="preview-label">Professor(a):</span>
+                                <span class="preview-value" id="previewProfessor">-</span>
                             </div>
                         </div>
                     </div>
@@ -707,89 +786,40 @@
                         </div>
                     </div>
 
-                    <div class="question-card">
-                        <div class="question-title">1.2. A relação dos professores com os alunos <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="prof_relacao_1" name="professores_relacao" value="1" required>
-                                <label for="prof_relacao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="prof_relacao_2" name="professores_relacao" value="2">
-                                <label for="prof_relacao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="prof_relacao_3" name="professores_relacao" value="3">
-                                <label for="prof_relacao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="prof_relacao_4" name="professores_relacao" value="4">
-                                <label for="prof_relacao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">1.3. A comunicação dos professores com os pais <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="prof_comunicacao_1" name="professores_comunicacao" value="1" required>
-                                <label for="prof_comunicacao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="prof_comunicacao_2" name="professores_comunicacao" value="2">
-                                <label for="prof_comunicacao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="prof_comunicacao_3" name="professores_comunicacao" value="3">
-                                <label for="prof_comunicacao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="prof_comunicacao_4" name="professores_comunicacao" value="4">
-                                <label for="prof_comunicacao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
                     <div class="textarea-container">
-                        <label class="textarea-label" for="professores_comentarios">Comentários adicionais sobre os professores <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="professores_comentarios" name="professores_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre os professores..."></textarea>
+                        <label class="textarea-label" for="recepcao_comentarios">
+                            Espaço para comentários ou sugestões sobre Recepção: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="recepcao_comentarios" name="recepcao_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a recepção..."></textarea>
                     </div>
                 </div>
 
-                <!-- Seção 2: Cantina -->
-                <div class="section" id="section-cantina">
+                <!-- Seção 8: Eventos (Pedagógicos) -->
+                <div class="section" id="section-eventos-pedagogicos">
                     <div class="section-header">
-                        <div class="section-icon">🍽️</div>
-                        <div class="section-title">Cantina</div>
+                        <div class="section-icon">🎓</div>
+                        <div class="section-title">Eventos (Pedagógicos)</div>
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">2.1. A qualidade dos alimentos oferecidos <span class="required-indicator">*</span></div>
+                        <div class="question-title">8.1. Organização dos eventos pedagógicos <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="cantina_qualidade_1" name="cantina_qualidade" value="1" required>
-                                <label for="cantina_qualidade_1">1</label>
+                                <input type="radio" id="eventos_ped_organizacao_1" name="eventos_ped_organizacao" value="1" required>
+                                <label for="eventos_ped_organizacao_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="cantina_qualidade_2" name="cantina_qualidade" value="2">
-                                <label for="cantina_qualidade_2">2</label>
+                                <input type="radio" id="eventos_ped_organizacao_2" name="eventos_ped_organizacao" value="2">
+                                <label for="eventos_ped_organizacao_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="cantina_qualidade_3" name="cantina_qualidade" value="3">
-                                <label for="cantina_qualidade_3">3</label>
+                                <input type="radio" id="eventos_ped_organizacao_3" name="eventos_ped_organizacao" value="3">
+                                <label for="eventos_ped_organizacao_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="cantina_qualidade_4" name="cantina_qualidade" value="4">
-                                <label for="cantina_qualidade_4">4</label>
+                                <input type="radio" id="eventos_ped_organizacao_4" name="eventos_ped_organizacao" value="4">
+                                <label for="eventos_ped_organizacao_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -799,49 +829,23 @@
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">2.2. A variedade do cardápio <span class="required-indicator">*</span></div>
+                        <div class="question-title">8.2. Qualidade dos eventos pedagógicos <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="cantina_variedade_1" name="cantina_variedade" value="1" required>
-                                <label for="cantina_variedade_1">1</label>
+                                <input type="radio" id="eventos_ped_qualidade_1" name="eventos_ped_qualidade" value="1" required>
+                                <label for="eventos_ped_qualidade_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="cantina_variedade_2" name="cantina_variedade" value="2">
-                                <label for="cantina_variedade_2">2</label>
+                                <input type="radio" id="eventos_ped_qualidade_2" name="eventos_ped_qualidade" value="2">
+                                <label for="eventos_ped_qualidade_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="cantina_variedade_3" name="cantina_variedade" value="3">
-                                <label for="cantina_variedade_3">3</label>
+                                <input type="radio" id="eventos_ped_qualidade_3" name="eventos_ped_qualidade" value="3">
+                                <label for="eventos_ped_qualidade_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="cantina_variedade_4" name="cantina_variedade" value="4">
-                                <label for="cantina_variedade_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">2.3. O atendimento da cantina <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="cantina_atendimento_1" name="cantina_atendimento" value="1" required>
-                                <label for="cantina_atendimento_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="cantina_atendimento_2" name="cantina_atendimento" value="2">
-                                <label for="cantina_atendimento_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="cantina_atendimento_3" name="cantina_atendimento" value="3">
-                                <label for="cantina_atendimento_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="cantina_atendimento_4" name="cantina_atendimento" value="4">
-                                <label for="cantina_atendimento_4">4</label>
+                                <input type="radio" id="eventos_ped_qualidade_4" name="eventos_ped_qualidade" value="4">
+                                <label for="eventos_ped_qualidade_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -851,36 +855,39 @@
                     </div>
 
                     <div class="textarea-container">
-                        <label class="textarea-label" for="cantina_comentarios">Comentários adicionais sobre a cantina <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="cantina_comentarios" name="cantina_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a cantina..."></textarea>
+                        <label class="textarea-label" for="eventos_ped_comentarios">
+                            Espaço para comentários ou sugestões sobre Eventos (Pedagógicos): <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="eventos_ped_comentarios" name="eventos_ped_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre os eventos pedagógicos..."></textarea>
                     </div>
                 </div>
 
-                <!-- Seção 3: Limpeza -->
-                <div class="section" id="section-limpeza">
+                <!-- Seção 9: Eventos (Familiares) -->
+                <div class="section" id="section-eventos-familiares">
                     <div class="section-header">
-                        <div class="section-icon">🧽</div>
-                        <div class="section-title">Limpeza</div>
+                        <div class="section-icon">👨‍👩‍👧‍👦</div>
+                        <div class="section-title">Eventos (Familiares)</div>
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">3.1. A limpeza das salas de aula <span class="required-indicator">*</span></div>
+                        <div class="question-title">9.1. Organização dos eventos familiares <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_salas_1" name="limpeza_salas" value="1" required>
-                                <label for="limpeza_salas_1">1</label>
+                                <input type="radio" id="eventos_fam_organizacao_1" name="eventos_fam_organizacao" value="1" required>
+                                <label for="eventos_fam_organizacao_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_salas_2" name="limpeza_salas" value="2">
-                                <label for="limpeza_salas_2">2</label>
+                                <input type="radio" id="eventos_fam_organizacao_2" name="eventos_fam_organizacao" value="2">
+                                <label for="eventos_fam_organizacao_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_salas_3" name="limpeza_salas" value="3">
-                                <label for="limpeza_salas_3">3</label>
+                                <input type="radio" id="eventos_fam_organizacao_3" name="eventos_fam_organizacao" value="3">
+                                <label for="eventos_fam_organizacao_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_salas_4" name="limpeza_salas" value="4">
-                                <label for="limpeza_salas_4">4</label>
+                                <input type="radio" id="eventos_fam_organizacao_4" name="eventos_fam_organizacao" value="4">
+                                <label for="eventos_fam_organizacao_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -890,49 +897,23 @@
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">3.2. A limpeza dos banheiros <span class="required-indicator">*</span></div>
+                        <div class="question-title">9.2. Qualidade dos eventos familiares <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_banheiros_1" name="limpeza_banheiros" value="1" required>
-                                <label for="limpeza_banheiros_1">1</label>
+                                <input type="radio" id="eventos_fam_qualidade_1" name="eventos_fam_qualidade" value="1" required>
+                                <label for="eventos_fam_qualidade_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_banheiros_2" name="limpeza_banheiros" value="2">
-                                <label for="limpeza_banheiros_2">2</label>
+                                <input type="radio" id="eventos_fam_qualidade_2" name="eventos_fam_qualidade" value="2">
+                                <label for="eventos_fam_qualidade_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_banheiros_3" name="limpeza_banheiros" value="3">
-                                <label for="limpeza_banheiros_3">3</label>
+                                <input type="radio" id="eventos_fam_qualidade_3" name="eventos_fam_qualidade" value="3">
+                                <label for="eventos_fam_qualidade_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="limpeza_banheiros_4" name="limpeza_banheiros" value="4">
-                                <label for="limpeza_banheiros_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">3.3. A limpeza das áreas comuns <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="limpeza_areas_1" name="limpeza_areas" value="1" required>
-                                <label for="limpeza_areas_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="limpeza_areas_2" name="limpeza_areas" value="2">
-                                <label for="limpeza_areas_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="limpeza_areas_3" name="limpeza_areas" value="3">
-                                <label for="limpeza_areas_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="limpeza_areas_4" name="limpeza_areas" value="4">
-                                <label for="limpeza_areas_4">4</label>
+                                <input type="radio" id="eventos_fam_qualidade_4" name="eventos_fam_qualidade" value="4">
+                                <label for="eventos_fam_qualidade_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -942,467 +923,15 @@
                     </div>
 
                     <div class="textarea-container">
-                        <label class="textarea-label" for="limpeza_comentarios">Comentários adicionais sobre a limpeza <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="limpeza_comentarios" name="limpeza_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a limpeza..."></textarea>
+                        <label class="textarea-label" for="eventos_fam_comentarios">
+                            Espaço para comentários ou sugestões sobre Eventos (Familiares): <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="eventos_fam_comentarios" name="eventos_fam_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre os eventos familiares..."></textarea>
                     </div>
                 </div>
 
-                <!-- Seção 4: Agenda Edu -->
-                <div class="section" id="section-agenda-edu">
-                    <div class="section-header">
-                        <div class="section-icon">📱</div>
-                        <div class="section-title">Agenda Edu</div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">4.1. A facilidade de uso da Agenda Edu <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_facilidade_1" name="agenda_facilidade" value="1" required>
-                                <label for="agenda_facilidade_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_facilidade_2" name="agenda_facilidade" value="2">
-                                <label for="agenda_facilidade_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_facilidade_3" name="agenda_facilidade" value="3">
-                                <label for="agenda_facilidade_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_facilidade_4" name="agenda_facilidade" value="4">
-                                <label for="agenda_facilidade_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">4.2. A qualidade das informações compartilhadas <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_informacoes_1" name="agenda_informacoes" value="1" required>
-                                <label for="agenda_informacoes_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_informacoes_2" name="agenda_informacoes" value="2">
-                                <label for="agenda_informacoes_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_informacoes_3" name="agenda_informacoes" value="3">
-                                <label for="agenda_informacoes_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_informacoes_4" name="agenda_informacoes" value="4">
-                                <label for="agenda_informacoes_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">4.3. A frequência das atualizações <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_frequencia_1" name="agenda_frequencia" value="1" required>
-                                <label for="agenda_frequencia_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_frequencia_2" name="agenda_frequencia" value="2">
-                                <label for="agenda_frequencia_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_frequencia_3" name="agenda_frequencia" value="3">
-                                <label for="agenda_frequencia_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="agenda_frequencia_4" name="agenda_frequencia" value="4">
-                                <label for="agenda_frequencia_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="textarea-container">
-                        <label class="textarea-label" for="agenda_comentarios">Comentários adicionais sobre a Agenda Edu <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="agenda_comentarios" name="agenda_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a Agenda Edu..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Seção 5: Coordenação -->
-                <div class="section" id="section-coordenacao">
-                    <div class="section-header">
-                        <div class="section-icon">👥</div>
-                        <div class="section-title">Coordenação</div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">5.1. O atendimento da coordenação <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_atendimento_1" name="coordenacao_atendimento" value="1" required>
-                                <label for="coordenacao_atendimento_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_atendimento_2" name="coordenacao_atendimento" value="2">
-                                <label for="coordenacao_atendimento_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_atendimento_3" name="coordenacao_atendimento" value="3">
-                                <label for="coordenacao_atendimento_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_atendimento_4" name="coordenacao_atendimento" value="4">
-                                <label for="coordenacao_atendimento_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">5.2. A resolução de problemas <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_resolucao_1" name="coordenacao_resolucao" value="1" required>
-                                <label for="coordenacao_resolucao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_resolucao_2" name="coordenacao_resolucao" value="2">
-                                <label for="coordenacao_resolucao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_resolucao_3" name="coordenacao_resolucao" value="3">
-                                <label for="coordenacao_resolucao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_resolucao_4" name="coordenacao_resolucao" value="4">
-                                <label for="coordenacao_resolucao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">5.3. A comunicação com os pais <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_comunicacao_1" name="coordenacao_comunicacao" value="1" required>
-                                <label for="coordenacao_comunicacao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_comunicacao_2" name="coordenacao_comunicacao" value="2">
-                                <label for="coordenacao_comunicacao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_comunicacao_3" name="coordenacao_comunicacao" value="3">
-                                <label for="coordenacao_comunicacao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="coordenacao_comunicacao_4" name="coordenacao_comunicacao" value="4">
-                                <label for="coordenacao_comunicacao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="textarea-container">
-                        <label class="textarea-label" for="coordenacao_comentarios">Comentários adicionais sobre a coordenação <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="coordenacao_comentarios" name="coordenacao_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a coordenação..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Seção 6: Direção -->
-                <div class="section" id="section-direcao">
-                    <div class="section-header">
-                        <div class="section-icon">🏛️</div>
-                        <div class="section-title">Direção</div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">6.1. A liderança da direção <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_lideranca_1" name="direcao_lideranca" value="1" required>
-                                <label for="direcao_lideranca_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_lideranca_2" name="direcao_lideranca" value="2">
-                                <label for="direcao_lideranca_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_lideranca_3" name="direcao_lideranca" value="3">
-                                <label for="direcao_lideranca_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_lideranca_4" name="direcao_lideranca" value="4">
-                                <label for="direcao_lideranca_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">6.2. A gestão da escola <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_gestao_1" name="direcao_gestao" value="1" required>
-                                <label for="direcao_gestao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_gestao_2" name="direcao_gestao" value="2">
-                                <label for="direcao_gestao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_gestao_3" name="direcao_gestao" value="3">
-                                <label for="direcao_gestao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_gestao_4" name="direcao_gestao" value="4">
-                                <label for="direcao_gestao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">6.3. A transparência nas decisões <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_transparencia_1" name="direcao_transparencia" value="1" required>
-                                <label for="direcao_transparencia_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_transparencia_2" name="direcao_transparencia" value="2">
-                                <label for="direcao_transparencia_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_transparencia_3" name="direcao_transparencia" value="3">
-                                <label for="direcao_transparencia_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="direcao_transparencia_4" name="direcao_transparencia" value="4">
-                                <label for="direcao_transparencia_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="textarea-container">
-                        <label class="textarea-label" for="direcao_comentarios">Comentários adicionais sobre a direção <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="direcao_comentarios" name="direcao_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a direção..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Seção 7: Recepção -->
-                <div class="section" id="section-recepcao">
-                    <div class="section-header">
-                        <div class="section-icon">🏢</div>
-                        <div class="section-title">Recepção</div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">7.1. O atendimento da recepção <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_atendimento_1" name="recepcao_atendimento" value="1" required>
-                                <label for="recepcao_atendimento_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_atendimento_2" name="recepcao_atendimento" value="2">
-                                <label for="recepcao_atendimento_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_atendimento_3" name="recepcao_atendimento" value="3">
-                                <label for="recepcao_atendimento_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_atendimento_4" name="recepcao_atendimento" value="4">
-                                <label for="recepcao_atendimento_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">7.2. A agilidade no atendimento <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_agilidade_1" name="recepcao_agilidade" value="1" required>
-                                <label for="recepcao_agilidade_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_agilidade_2" name="recepcao_agilidade" value="2">
-                                <label for="recepcao_agilidade_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_agilidade_3" name="recepcao_agilidade" value="3">
-                                <label for="recepcao_agilidade_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_agilidade_4" name="recepcao_agilidade" value="4">
-                                <label for="recepcao_agilidade_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">7.3. A cordialidade dos funcionários <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_cordialidade_1" name="recepcao_cordialidade" value="1" required>
-                                <label for="recepcao_cordialidade_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_cordialidade_2" name="recepcao_cordialidade" value="2">
-                                <label for="recepcao_cordialidade_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_cordialidade_3" name="recepcao_cordialidade" value="3">
-                                <label for="recepcao_cordialidade_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="recepcao_cordialidade_4" name="recepcao_cordialidade" value="4">
-                                <label for="recepcao_cordialidade_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="textarea-container">
-                        <label class="textarea-label" for="recepcao_comentarios">Comentários adicionais sobre a recepção <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="recepcao_comentarios" name="recepcao_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a recepção..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Seção 8: Eventos -->
-                <div class="section" id="section-eventos">
-                    <div class="section-header">
-                        <div class="section-icon">🎉</div>
-                        <div class="section-title">Eventos</div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">8.1. A organização dos eventos <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_organizacao_1" name="eventos_organizacao" value="1" required>
-                                <label for="eventos_organizacao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_organizacao_2" name="eventos_organizacao" value="2">
-                                <label for="eventos_organizacao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_organizacao_3" name="eventos_organizacao" value="3">
-                                <label for="eventos_organizacao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_organizacao_4" name="eventos_organizacao" value="4">
-                                <label for="eventos_organizacao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">8.2. A frequência dos eventos <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_frequencia_1" name="eventos_frequencia" value="1" required>
-                                <label for="eventos_frequencia_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_frequencia_2" name="eventos_frequencia" value="2">
-                                <label for="eventos_frequencia_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_frequencia_3" name="eventos_frequencia" value="3">
-                                <label for="eventos_frequencia_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_frequencia_4" name="eventos_frequencia" value="4">
-                                <label for="eventos_frequencia_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">8.3. A qualidade dos eventos <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_qualidade_1" name="eventos_qualidade" value="1" required>
-                                <label for="eventos_qualidade_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_qualidade_2" name="eventos_qualidade" value="2">
-                                <label for="eventos_qualidade_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_qualidade_3" name="eventos_qualidade" value="3">
-                                <label for="eventos_qualidade_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="eventos_qualidade_4" name="eventos_qualidade" value="4">
-                                <label for="eventos_qualidade_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="textarea-container">
-                        <label class="textarea-label" for="eventos_comentarios">Comentários adicionais sobre os eventos <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="eventos_comentarios" name="eventos_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre os eventos..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Seção 9: Segurança -->
+                <!-- Seção 10: Segurança -->
                 <div class="section" id="section-seguranca">
                     <div class="section-header">
                         <div class="section-icon">🔒</div>
@@ -1410,23 +939,23 @@
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">9.1. A segurança física da escola <span class="required-indicator">*</span></div>
+                        <div class="question-title">10.1. Você se sente seguro deixando seu(a) filho(a) na escola <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_fisica_1" name="seguranca_fisica" value="1" required>
-                                <label for="seguranca_fisica_1">1</label>
+                                <input type="radio" id="seguranca_sentimento_1" name="seguranca_sentimento" value="1" required>
+                                <label for="seguranca_sentimento_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_fisica_2" name="seguranca_fisica" value="2">
-                                <label for="seguranca_fisica_2">2</label>
+                                <input type="radio" id="seguranca_sentimento_2" name="seguranca_sentimento" value="2">
+                                <label for="seguranca_sentimento_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_fisica_3" name="seguranca_fisica" value="3">
-                                <label for="seguranca_fisica_3">3</label>
+                                <input type="radio" id="seguranca_sentimento_3" name="seguranca_sentimento" value="3">
+                                <label for="seguranca_sentimento_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_fisica_4" name="seguranca_fisica" value="4">
-                                <label for="seguranca_fisica_4">4</label>
+                                <input type="radio" id="seguranca_sentimento_4" name="seguranca_sentimento" value="4">
+                                <label for="seguranca_sentimento_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -1436,23 +965,23 @@
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">9.2. O controle de acesso <span class="required-indicator">*</span></div>
+                        <div class="question-title">10.2. A segurança das instalações da escola <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_acesso_1" name="seguranca_acesso" value="1" required>
-                                <label for="seguranca_acesso_1">1</label>
+                                <input type="radio" id="seguranca_instalacoes_1" name="seguranca_instalacoes" value="1" required>
+                                <label for="seguranca_instalacoes_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_acesso_2" name="seguranca_acesso" value="2">
-                                <label for="seguranca_acesso_2">2</label>
+                                <input type="radio" id="seguranca_instalacoes_2" name="seguranca_instalacoes" value="2">
+                                <label for="seguranca_instalacoes_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_acesso_3" name="seguranca_acesso" value="3">
-                                <label for="seguranca_acesso_3">3</label>
+                                <input type="radio" id="seguranca_instalacoes_3" name="seguranca_instalacoes" value="3">
+                                <label for="seguranca_instalacoes_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_acesso_4" name="seguranca_acesso" value="4">
-                                <label for="seguranca_acesso_4">4</label>
+                                <input type="radio" id="seguranca_instalacoes_4" name="seguranca_instalacoes" value="4">
+                                <label for="seguranca_instalacoes_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -1462,23 +991,23 @@
                     </div>
 
                     <div class="question-card">
-                        <div class="question-title">9.3. A supervisão dos alunos <span class="required-indicator">*</span></div>
+                        <div class="question-title">10.3. O controle de acesso da escola <span class="required-indicator">*</span></div>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_supervisao_1" name="seguranca_supervisao" value="1" required>
-                                <label for="seguranca_supervisao_1">1</label>
+                                <input type="radio" id="seguranca_controle_1" name="seguranca_controle" value="1" required>
+                                <label for="seguranca_controle_1">1</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_supervisao_2" name="seguranca_supervisao" value="2">
-                                <label for="seguranca_supervisao_2">2</label>
+                                <input type="radio" id="seguranca_controle_2" name="seguranca_controle" value="2">
+                                <label for="seguranca_controle_2">2</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_supervisao_3" name="seguranca_supervisao" value="3">
-                                <label for="seguranca_supervisao_3">3</label>
+                                <input type="radio" id="seguranca_controle_3" name="seguranca_controle" value="3">
+                                <label for="seguranca_controle_3">3</label>
                             </div>
                             <div class="radio-option">
-                                <input type="radio" id="seguranca_supervisao_4" name="seguranca_supervisao" value="4">
-                                <label for="seguranca_supervisao_4">4</label>
+                                <input type="radio" id="seguranca_controle_4" name="seguranca_controle" value="4">
+                                <label for="seguranca_controle_4">4</label>
                             </div>
                         </div>
                         <div class="scale-legend">
@@ -1488,109 +1017,63 @@
                     </div>
 
                     <div class="textarea-container">
-                        <label class="textarea-label" for="seguranca_comentarios">Comentários adicionais sobre a segurança <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="seguranca_comentarios" name="seguranca_comentarios" class="textarea" placeholder="Compartilhe suas observações sobre a segurança..."></textarea>
+                        <label class="textarea-label" for="seguranca_comentarios">
+                            Espaço para comentários ou sugestões sobre Segurança: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="seguranca_comentarios" name="seguranca_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a segurança..."></textarea>
                     </div>
                 </div>
 
-                <!-- Seção 10: Avaliação Geral -->
-                <div class="section" id="section-avaliacao-geral">
+                <!-- Seção 11: Comentários Gerais -->
+                <div class="section" id="section11">
                     <div class="section-header">
-                        <div class="section-icon">⭐</div>
-                        <div class="section-title">Avaliação Geral</div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">10.1. Sua satisfação geral com a escola <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="geral_satisfacao_1" name="geral_satisfacao" value="1" required>
-                                <label for="geral_satisfacao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="geral_satisfacao_2" name="geral_satisfacao" value="2">
-                                <label for="geral_satisfacao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="geral_satisfacao_3" name="geral_satisfacao" value="3">
-                                <label for="geral_satisfacao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="geral_satisfacao_4" name="geral_satisfacao" value="4">
-                                <label for="geral_satisfacao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Insatisfeito</span>
-                            <span>Muito satisfeito</span>
-                        </div>
-                    </div>
-
-                    <div class="question-card">
-                        <div class="question-title">10.2. Você recomendaria nossa escola para outros pais? <span class="required-indicator">*</span></div>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="geral_recomendacao_1" name="geral_recomendacao" value="1" required>
-                                <label for="geral_recomendacao_1">1</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="geral_recomendacao_2" name="geral_recomendacao" value="2">
-                                <label for="geral_recomendacao_2">2</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="geral_recomendacao_3" name="geral_recomendacao" value="3">
-                                <label for="geral_recomendacao_3">3</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="geral_recomendacao_4" name="geral_recomendacao" value="4">
-                                <label for="geral_recomendacao_4">4</label>
-                            </div>
-                        </div>
-                        <div class="scale-legend">
-                            <span>Definitivamente não</span>
-                            <span>Definitivamente sim</span>
-                        </div>
+                        <div class="section-icon">💬</div>
+                        <div class="section-title">Comentários Gerais</div>
                     </div>
 
                     <div class="textarea-container">
-                        <label class="textarea-label" for="geral_sugestoes">Sugestões para melhorias <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="geral_sugestoes" name="geral_sugestoes" class="textarea large" placeholder="Compartilhe suas sugestões para melhorarmos ainda mais nossa escola..."></textarea>
-                    </div>
-
-                    <div class="textarea-container">
-                        <label class="textarea-label" for="geral_comentarios">Comentários finais <span class="optional-indicator">(opcional)</span></label>
-                        <textarea id="geral_comentarios" name="geral_comentarios" class="textarea large" placeholder="Deixe aqui qualquer comentário adicional que gostaria de compartilhar..."></textarea>
+                        <label class="textarea-label" for="comentarios_gerais">
+                            Você tem algum comentário ou sugestão adicional sobre qualquer aspecto da escola? <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="comentarios_gerais" name="comentarios_gerais" class="textarea large" 
+                                  placeholder="Compartilhe qualquer comentário ou sugestão adicional que considere importante..."></textarea>
                     </div>
                 </div>
 
                 <!-- Navigation Buttons -->
                 <div class="navigation-buttons">
-                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousSection()">Anterior</button>
-                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextSection()">Próximo</button>
-                    <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">Enviar Questionário</button>
+                    <button type="button" class="btn btn-secondary" id="btnPrevious" onclick="previousSection()" style="display: none;">
+                        ← Anterior
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btnNext" onclick="nextSection()">
+                        Próximo →
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="btnSubmit" style="display: none;">
+                        Enviar Questionário
+                    </button>
                 </div>
             </form>
-        </div>
 
-        <!-- Loading Screen -->
-        <div class="loading" id="loadingScreen">
-            <div class="spinner"></div>
-            <h3>Enviando suas respostas...</h3>
-            <p>Por favor, aguarde enquanto processamos seu questionário.</p>
-        </div>
+            <!-- Loading Screen -->
+            <div class="loading" id="loadingScreen">
+                <div class="spinner"></div>
+                <p>Enviando questionário...</p>
+            </div>
 
-        <!-- Success Screen -->
-        <div class="success-screen" id="successScreen">
-            <div class="success-icon">✓</div>
-            <h2 class="success-title">Questionário Enviado com Sucesso!</h2>
-            <p class="success-message">Agradecemos muito pela sua participação. Suas respostas são fundamentais para melhorarmos continuamente a qualidade de nossa escola.</p>
-            <p class="success-message">Suas informações foram registradas de forma anônima e serão utilizadas exclusivamente para fins de melhoria dos nossos serviços.</p>
+            <!-- Success Screen -->
+            <div class="success-screen" id="successScreen">
+                <div class="success-icon">✓</div>
+                <h2 class="success-title">Questionário enviado com sucesso!</h2>
+                <p class="success-message">Agradecemos sua participação. Suas respostas são muito importantes para melhorarmos continuamente a qualidade de nossa escola.</p>
+            </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p>&copy; 2024 Centro Educacional Amadeus. Todos os direitos reservados.</p>
-            <p>Este questionário é confidencial e anônimo.</p>
+            <p>Agradecemos sua participação!</p>
+            <p>São Gonçalo do Amarante - RN</p>
+            <p>Junho de 2025</p>
         </div>
     </div>
 
@@ -1706,7 +1189,7 @@
             }
         };
 
-        // Elementos do DOM para dados do aluno
+        // Elementos do DOM específicos para dados do aluno
         const serieSelect = document.getElementById('serie');
         const turmaGroup = document.getElementById('turmaGroup');
         const turmaSelect = document.getElementById('turma');
@@ -1716,10 +1199,179 @@
         const professorInfo = document.getElementById('professorInfo');
         const previewCard = document.getElementById('previewCard');
 
-        // Event listeners para dados do aluno
-        if (serieSelect) serieSelect.addEventListener('change', handleSerieChange);
-        if (turmaSelect) turmaSelect.addEventListener('change', handleTurmaChange);
-        if (turnoSelect) turnoSelect.addEventListener('change', handleTurnoChange);
+        // Variáveis para tracking de tempo
+        let timeTracking = {
+            sessionStart: Date.now(),
+            currentSection: null,
+            sectionTimes: {
+                dados_aluno: 0,
+                professores: 0,
+                cantina: 0,
+                limpeza_escola: 0,
+                agenda_edu: 0,
+                coordenacao: 0,
+                direcao: 0,
+                recepcao: 0,
+                eventos_pedagogicos: 0,
+                eventos_familiares: 0,
+                seguranca: 0
+            },
+            sectionStartTime: Date.now(),
+            totalClicks: 0
+        };
+
+        // Device e screen info
+        const deviceInfo = {
+            type: /Mobile|Android|iPhone|iPad/.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+            resolution: `${screen.width}x${screen.height}`,
+            userAgent: navigator.userAgent
+        };
+
+        // Array para capturar erros JavaScript
+        let jsErrors = [];
+        window.addEventListener('error', function(event) {
+            jsErrors.push(`${event.message} at ${event.filename}:${event.lineno}`);
+        });
+
+        // Função para detectar qual seção está visível
+        function getCurrentVisibleSection() {
+            const sections = [
+                { id: 'section-dados-aluno', name: 'dados_aluno' },
+                { id: 'section-professores', name: 'professores' },
+                { id: 'section-cantina', name: 'cantina' },
+                { id: 'section-limpeza', name: 'limpeza_escola' },
+                { id: 'section-agenda', name: 'agenda_edu' },
+                { id: 'section-coordenacao', name: 'coordenacao' },
+                { id: 'section-direcao', name: 'direcao' },
+                { id: 'section-recepcao', name: 'recepcao' },
+                { id: 'section-eventos-pedagogicos', name: 'eventos_pedagogicos' },
+                { id: 'section-eventos-familiares', name: 'eventos_familiares' },
+                { id: 'section-seguranca', name: 'seguranca' }
+            ];
+
+            let visibleSection = null;
+            let maxVisibleArea = 0;
+
+            sections.forEach(section => {
+                const element = document.getElementById(section.id);
+                if (element && element.classList.contains('active')) {
+                    visibleSection = section.name;
+                }
+            });
+
+            return visibleSection;
+        }
+
+        // Função para iniciar tracking de uma seção
+        function startSectionTracking(sectionName) {
+            if (timeTracking.currentSection && timeTracking.currentSection !== sectionName) {
+                const timeSpent = Date.now() - timeTracking.sectionStartTime;
+                timeTracking.sectionTimes[timeTracking.currentSection] += timeSpent;
+            }
+            
+            timeTracking.currentSection = sectionName;
+            timeTracking.sectionStartTime = Date.now();
+        }
+
+        // Função para finalizar tracking da seção atual
+        function finalizeSectionTracking() {
+            if (timeTracking.currentSection) {
+                const timeSpent = Date.now() - timeTracking.sectionStartTime;
+                timeTracking.sectionTimes[timeTracking.currentSection] += timeSpent;
+            }
+        }
+
+        // Tracking de cliques
+        document.addEventListener('click', function() {
+            timeTracking.totalClicks++;
+        });
+
+        // Função para gerar dados de analytics
+        function getAnalyticsData() {
+            finalizeSectionTracking();
+            const totalTime = Date.now() - timeTracking.sessionStart;
+            
+            return {
+                tempo_total_segundos: Math.round(totalTime / 1000),
+                tempos_secoes: {
+                    dados_aluno: Math.round(timeTracking.sectionTimes.dados_aluno / 1000),
+                    professores: Math.round(timeTracking.sectionTimes.professores / 1000),
+                    cantina: Math.round(timeTracking.sectionTimes.cantina / 1000),
+                    limpeza_escola: Math.round(timeTracking.sectionTimes.limpeza_escola / 1000),
+                    agenda_edu: Math.round(timeTracking.sectionTimes.agenda_edu / 1000),
+                    coordenacao: Math.round(timeTracking.sectionTimes.coordenacao / 1000),
+                    direcao: Math.round(timeTracking.sectionTimes.direcao / 1000),
+                    recepcao: Math.round(timeTracking.sectionTimes.recepcao / 1000),
+                    eventos_pedagogicos: Math.round(timeTracking.sectionTimes.eventos_pedagogicos / 1000),
+                    eventos_familiares: Math.round(timeTracking.sectionTimes.eventos_familiares / 1000),
+                    seguranca: Math.round(timeTracking.sectionTimes.seguranca / 1000)
+                },
+                cliques_interacoes: timeTracking.totalClicks,
+                resolucao_tela: deviceInfo.resolution,
+                tipo_device: deviceInfo.type,
+                erros_js: jsErrors
+            };
+        }
+
+        // Global variables
+        let currentSection = 1;
+        const totalSections = 12; // Atualizado para incluir a nova seção
+        let startTime = Date.now();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeForm();
+            setupEventListeners();
+            loadSessionData();
+            
+            // Inicializar tracking
+            setTimeout(function() {
+                const initialSection = getCurrentVisibleSection();
+                if (initialSection) {
+                    startSectionTracking(initialSection);
+                }
+            }, 1000);
+        });
+
+        window.addEventListener('beforeunload', function() {
+            finalizeSectionTracking();
+        });
+
+        function initializeForm() {
+            updateProgress();
+            updateSectionIndicators();
+            
+            // Setup radio button interactions
+            setupRadioButtons();
+            
+            // Setup checkbox interactions for cantina
+            setupCantinaCheckboxes();
+
+            // Setup event listeners para dados do aluno
+            setupDadosAlunoEventListeners();
+            
+            // Prevent form submission on Enter
+            document.getElementById('questionarioForm').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.type !== 'submit') {
+                    e.preventDefault();
+                }
+            });
+
+            // Prevent page unload without warning if form has data
+            window.addEventListener('beforeunload', function(e) {
+                if (hasUnsavedData()) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
+            });
+        }
+
+        function setupDadosAlunoEventListeners() {
+            // Event listeners para dados do aluno
+            serieSelect.addEventListener('change', handleSerieChange);
+            turmaSelect.addEventListener('change', handleTurmaChange);
+            turnoSelect.addEventListener('change', handleTurnoChange);
+        }
 
         function handleSerieChange() {
             const serieValue = serieSelect.value;
@@ -1744,18 +1396,14 @@
                     break;
             }
 
-            updatePreview();
+            updateDadosAlunoPreview();
         }
 
         function handleAutomatico(serieData) {
             hideAllDadosAlunoGroups();
             professorInfo.textContent = serieData.professor || "Professor não informado";
-            professorInfo.style.background = "#e8f5e8";
-            professorInfo.style.borderColor = "#c3e6c3";
-            professorInfo.style.color = "#155724";
-            professorInfo.style.fontStyle = "normal";
-            professorInfo.style.fontWeight = "600";
-            showPreview();
+            professorInfo.className = "info-display";
+            showDadosAlunoPreview();
         }
 
         function handleTurnoMultiplo(serieData) {
@@ -1772,11 +1420,7 @@
             });
 
             professorInfo.textContent = serieData.professor;
-            professorInfo.style.background = "#e8f5e8";
-            professorInfo.style.borderColor = "#c3e6c3";
-            professorInfo.style.color = "#155724";
-            professorInfo.style.fontStyle = "normal";
-            professorInfo.style.fontWeight = "600";
+            professorInfo.className = "info-display";
         }
 
         function handleTurmaMultipla(serieData) {
@@ -1796,11 +1440,7 @@
             });
 
             professorInfo.textContent = "Selecione uma turma para ver o professor";
-            professorInfo.style.background = "#f8f9fa";
-            professorInfo.style.borderColor = "#e9ecef";
-            professorInfo.style.color = "#6c757d";
-            professorInfo.style.fontStyle = "italic";
-            professorInfo.style.fontWeight = "normal";
+            professorInfo.className = "info-display empty";
         }
 
         function handleTurmaChange() {
@@ -1808,642 +1448,529 @@
             if (selectedOption.value) {
                 const professor = selectedOption.dataset.professor || "Professor não informado";
                 professorInfo.textContent = professor;
-                professorInfo.style.background = "#e8f5e8";
-                professorInfo.style.borderColor = "#c3e6c3";
-                professorInfo.style.color = "#155724";
-                professorInfo.style.fontStyle = "normal";
-                professorInfo.style.fontWeight = "600";
-                showPreview();
+                professorInfo.className = "info-display";
+                showDadosAlunoPreview();
             } else {
                 professorInfo.textContent = "Selecione uma turma para ver o professor";
-                professorInfo.style.background = "#f8f9fa";
-                professorInfo.style.borderColor = "#e9ecef";
-                professorInfo.style.color = "#6c757d";
-                professorInfo.style.fontStyle = "italic";
-                professorInfo.style.fontWeight = "normal";
-                hidePreview();
+                professorInfo.className = "info-display empty";
+                hideDadosAlunoPreview();
             }
-            updatePreview();
+            updateDadosAlunoPreview();
         }
 
         function handleTurnoChange() {
-            const turnoValue = turnoSelect.value;
-            if (turnoValue) {
-                showPreview();
+            if (turnoSelect.value) {
+                showDadosAlunoPreview();
             } else {
-                hidePreview();
+                hideDadosAlunoPreview();
             }
-            updatePreview();
+            updateDadosAlunoPreview();
         }
 
         function resetDadosAlunoFields() {
             turmaSelect.innerHTML = '<option value="">Selecione...</option>';
             turnoSelect.innerHTML = '<option value="">Selecione...</option>';
             professorInfo.textContent = "Será preenchido automaticamente após selecionar série e turma";
-            professorInfo.style.background = "#f8f9fa";
-            professorInfo.style.borderColor = "#e9ecef";
-            professorInfo.style.color = "#6c757d";
-            professorInfo.style.fontStyle = "italic";
-            professorInfo.style.fontWeight = "normal";
-            hidePreview();
+            professorInfo.className = "info-display empty";
         }
 
         function hideAllDadosAlunoGroups() {
             turmaGroup.style.display = 'none';
             turnoGroup.style.display = 'none';
+            hideDadosAlunoPreview();
         }
 
-        function showPreview() {
+        function showDadosAlunoPreview() {
             previewCard.style.display = 'block';
         }
 
-        function hidePreview() {
+        function hideDadosAlunoPreview() {
             previewCard.style.display = 'none';
         }
 
-        function updatePreview() {
+        function updateDadosAlunoPreview() {
             const serieValue = serieSelect.value;
-            const turmaValue = turmaSelect.value;
-            const turnoValue = turnoSelect.value;
-
             if (!serieValue) return;
 
             const serieData = seriesData[serieValue];
             
-            // Atualizar série
+            // Série
             document.getElementById('previewSerie').textContent = serieData.nome;
 
-            // Atualizar turma
+            // Turma
             let turmaText = "-";
-            if (serieData.tipo === 'automatico') {
+            if (serieData.tipo === 'turma_multipla' && turmaSelect.value) {
+                turmaText = `Turma ${turmaSelect.value}`;
+            } else if (serieData.turma) {
                 turmaText = serieData.turma || "Única";
-            } else if (serieData.tipo === 'turno_multiplo') {
-                turmaText = "Única";
-            } else if (serieData.tipo === 'turma_multipla' && turmaValue) {
-                turmaText = turmaValue;
             }
             document.getElementById('previewTurma').textContent = turmaText;
 
-            // Atualizar turno
+            // Turno
             let turnoText = "-";
             if (serieData.tipo === 'automatico') {
-                turnoText = serieData.turno || "-";
-            } else if (serieData.tipo === 'turno_multiplo' && turnoValue) {
-                turnoText = turnoValue.charAt(0).toUpperCase() + turnoValue.slice(1);
-            } else if (serieData.tipo === 'turma_multipla' && turmaValue) {
+                turnoText = serieData.turno;
+            } else if (serieData.tipo === 'turno_multiplo' && turnoSelect.value) {
+                turnoText = turnoSelect.options[turnoSelect.selectedIndex].textContent;
+            } else if (serieData.tipo === 'turma_multipla' && turmaSelect.value) {
                 const selectedOption = turmaSelect.options[turmaSelect.selectedIndex];
-                turnoText = selectedOption.dataset.turno || "-";
+                turnoText = selectedOption.dataset.turno;
             }
             document.getElementById('previewTurno').textContent = turnoText;
 
-            // Atualizar professor
+            // Professor
             let professorText = "-";
             if (serieData.tipo === 'automatico') {
-                professorText = serieData.professor || "Professor não informado";
+                professorText = serieData.professor || "Não informado";
             } else if (serieData.tipo === 'turno_multiplo') {
-                professorText = serieData.professor || "Professor não informado";
-            } else if (serieData.tipo === 'turma_multipla' && turmaValue) {
+                professorText = serieData.professor;
+            } else if (serieData.tipo === 'turma_multipla' && turmaSelect.value) {
                 const selectedOption = turmaSelect.options[turmaSelect.selectedIndex];
-                professorText = selectedOption.dataset.professor || "Professor não informado";
+                professorText = selectedOption.dataset.professor || "Não informado";
             }
             document.getElementById('previewProfessor').textContent = professorText;
         }
 
-        // Configuração das séries e suas informações (código antigo - manter para compatibilidade)
-        const seriesConfig = {
-            'maternal_ii': {
-                professor: 'Luana Fraga',
-                turno: 'vespertino',
-                turma: 'Única',
-                autoFill: true
-            },
-            'maternal_iii': {
-                professor: 'Andréa Leite',
-                turnos: ['matutino', 'vespertino'],
-                turma: 'Única',
-                autoFill: false
-            },
-            '1_ano': {
-                turmas: [
-                    { nome: 'A', professor: 'Professor A', turno: 'matutino' },
-                    { nome: 'B', professor: 'Professor B', turno: 'vespertino' }
-                ],
-                autoFill: false
-            },
-            '2_ano': {
-                turmas: [
-                    { nome: 'A', professor: 'Professor A', turno: 'matutino' },
-                    { nome: 'B', professor: 'Professor B', turno: 'vespertino' },
-                    { nome: 'C', professor: 'Professor C', turno: 'matutino' }
-                ],
-                autoFill: false
-            },
-            '3_ano': {
-                turmas: [
-                    { nome: 'A', professor: 'Professor A', turno: 'matutino' },
-                    { nome: 'B', professor: 'Professor B', turno: 'vespertino' }
-                ],
-                autoFill: false
-            },
-            '4_ano': {
-                turmas: [
-                    { nome: 'A', professor: 'Professor A', turno: 'matutino' },
-                    { nome: 'B', professor: 'Professor B', turno: 'vespertino' }
-                ],
-                autoFill: false
-            },
-            '5_ano': {
-                turmas: [
-                    { nome: 'A', professor: 'Professor A', turno: 'matutino' },
-                    { nome: 'B', professor: 'Professor B', turno: 'vespertino' }
-                ],
-                autoFill: false
-            }
-        };
+        function setupEventListeners() {
+            // Auto-save on input changes
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('change', saveSessionData);
+                input.addEventListener('input', saveSessionData);
+            });
 
-        // Variáveis globais para analytics comportamental
-        let startTime = Date.now();
-        let sectionStartTime = Date.now();
-        let currentSection = 0;
-        let analyticsData = {
-            timePerSection: {},
-            difficultyPoints: [],
-            abandonmentPoints: [],
-            totalTime: 0,
-            completionRate: 0
-        };
-
-        // Lista de seções
-        const sections = [
-            'section-dados-aluno',
-            'section-professores', 
-            'section-cantina', 
-            'section-limpeza', 
-            'section-agenda-edu', 
-            'section-coordenacao', 
-            'section-direcao', 
-            'section-recepcao', 
-            'section-eventos', 
-            'section-seguranca', 
-            'section-avaliacao-geral'
-        ];
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeForm();
-            setupEventListeners();
-            loadSessionData();
-            updateProgress();
-            updateSectionProgress();
-        });
-
-        function initializeForm() {
-            // Configurar analytics comportamental
-            setupAnalytics();
+            // Form submission
+            document.getElementById('questionarioForm').addEventListener('submit', handleSubmit);
         }
 
-        function setupEventListeners() {
-            // Event listeners para radio buttons
+        function setupRadioButtons() {
             const radioButtons = document.querySelectorAll('input[type="radio"]');
             radioButtons.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    updateRadioSelection(this);
-                    saveSessionData();
-                    trackUserInteraction('radio_selection', this.name, this.value);
-                });
-            });
-
-            // Event listeners para textareas
-            const textareas = document.querySelectorAll('textarea');
-            textareas.forEach(textarea => {
-                textarea.addEventListener('input', function() {
-                    saveSessionData();
-                    trackUserInteraction('textarea_input', this.name, this.value.length);
-                });
-                
-                textarea.addEventListener('focus', function() {
-                    trackUserInteraction('textarea_focus', this.name);
-                });
-            });
-
-            // Event listener para o formulário
-            document.getElementById('questionarioForm').addEventListener('submit', handleFormSubmit);
-        }
-
-        function handleSerieChange() {
-            const serie = this.value;
-            const config = seriesConfig[serie];
-            
-            if (!config) {
-                hideAllDynamicFields();
-                return;
-            }
-
-            if (config.autoFill) {
-                // Preenchimento automático para Maternal II
-                autoFillFields(config);
-            } else {
-                // Mostrar campos para seleção manual
-                showDynamicFields(config);
-            }
-            
-            trackUserInteraction('serie_selection', 'serie', serie);
-        }
-
-        function autoFillFields(config) {
-            // Preencher automaticamente os campos
-            if (config.professor) {
-                document.getElementById('professor-info').textContent = `Professor: ${config.professor}`;
-                document.getElementById('professor-card').style.display = 'block';
-                document.getElementById('professor').value = config.professor;
-                document.getElementById('professor').style.display = 'none';
-            }
-            
-            if (config.turno) {
-                document.getElementById('turno-info').textContent = `Turno: ${config.turno.charAt(0).toUpperCase() + config.turno.slice(1)}`;
-                document.getElementById('turno-card').style.display = 'block';
-                document.getElementById('turno').value = config.turno;
-                document.getElementById('turno').style.display = 'none';
-            }
-            
-            if (config.turma) {
-                document.getElementById('turma-info').textContent = `Turma: ${config.turma}`;
-                document.getElementById('turma-card').style.display = 'block';
-                document.getElementById('turma').value = config.turma;
-                document.getElementById('turma').style.display = 'none';
-            }
-        }
-
-        function showDynamicFields(config) {
-            hideAllDynamicFields();
-            
-            if (config.professor && !config.turnos && !config.turmas) {
-                // Maternal III - professor fixo, escolher turno
-                document.getElementById('professor-info').textContent = `Professor: ${config.professor}`;
-                document.getElementById('professor-card').style.display = 'block';
-                document.getElementById('professor').value = config.professor;
-                document.getElementById('professor').style.display = 'none';
-                
-                showTurnoSelection(config.turnos);
-            } else if (config.turmas) {
-                // Séries com turmas - escolher turma (que define professor e turno)
-                showTurmaSelection(config.turmas);
-            }
-        }
-
-        function showTurnoSelection(turnos) {
-            const turnoSelect = document.getElementById('turno');
-            const turnoCard = document.getElementById('turno-card');
-            
-            turnoSelect.innerHTML = '<option value="">Selecione o turno</option>';
-            turnos.forEach(turno => {
-                const option = document.createElement('option');
-                option.value = turno;
-                option.textContent = turno.charAt(0).toUpperCase() + turno.slice(1);
-                turnoSelect.appendChild(option);
-            });
-            
-            turnoSelect.style.display = 'block';
-            turnoCard.style.display = 'block';
-            document.getElementById('turno-info').textContent = '';
-        }
-
-        function showTurmaSelection(turmas) {
-            const turmaSelect = document.getElementById('turma');
-            const turmaCard = document.getElementById('turma-card');
-            
-            turmaSelect.innerHTML = '<option value="">Selecione a turma</option>';
-            turmas.forEach(turma => {
-                const option = document.createElement('option');
-                option.value = JSON.stringify(turma);
-                option.textContent = `Turma ${turma.nome} - ${turma.professor} (${turma.turno.charAt(0).toUpperCase() + turma.turno.slice(1)})`;
-                turmaSelect.appendChild(option);
-            });
-            
-            turmaSelect.style.display = 'block';
-            turmaCard.style.display = 'block';
-            document.getElementById('turma-info').textContent = '';
-        }
-
-        function handleTurnoChange() {
-            const turno = this.value;
-            if (turno) {
-                document.getElementById('turma-info').textContent = 'Turma: Única';
-                document.getElementById('turma-card').style.display = 'block';
-                document.getElementById('turma').value = 'Única';
-                document.getElementById('turma').style.display = 'none';
-            }
-            trackUserInteraction('turno_selection', 'turno', turno);
-        }
-
-        function handleTurmaChange() {
-            const turmaData = this.value;
-            if (turmaData && turmaData !== 'Única') {
-                const turma = JSON.parse(turmaData);
-                
-                // Preencher professor e turno automaticamente
-                document.getElementById('professor-info').textContent = `Professor: ${turma.professor}`;
-                document.getElementById('professor-card').style.display = 'block';
-                document.getElementById('professor').value = turma.professor;
-                document.getElementById('professor').style.display = 'none';
-                
-                document.getElementById('turno-info').textContent = `Turno: ${turma.turno.charAt(0).toUpperCase() + turma.turno.slice(1)}`;
-                document.getElementById('turno-card').style.display = 'block';
-                document.getElementById('turno').value = turma.turno;
-                document.getElementById('turno').style.display = 'none';
-            }
-            trackUserInteraction('turma_selection', 'turma', turmaData);
-        }
-
-        function hideAllDynamicFields() {
-            document.getElementById('professor-card').style.display = 'none';
-            document.getElementById('turno-card').style.display = 'none';
-            document.getElementById('turma-card').style.display = 'none';
-            
-            // Resetar campos
-            document.getElementById('professor').value = '';
-            document.getElementById('turno').value = '';
-            document.getElementById('turma').value = '';
-            
-            // Mostrar selects novamente
-            document.getElementById('professor').style.display = 'block';
-            document.getElementById('turno').style.display = 'block';
-            document.getElementById('turma').style.display = 'block';
-            
-            // Limpar textos informativos
-            document.getElementById('professor-info').textContent = '';
-            document.getElementById('turno-info').textContent = '';
-            document.getElementById('turma-info').textContent = '';
-        }
-
-        function setupAnalytics() {
-            // Rastrear tempo gasto em cada seção
-            sectionStartTime = Date.now();
-            
-            // Rastrear pontos de dificuldade (tempo excessivo em uma pergunta)
-            const inputs = document.querySelectorAll('input, textarea, select');
-            inputs.forEach(input => {
-                let focusTime = 0;
-                
-                input.addEventListener('focus', function() {
-                    focusTime = Date.now();
-                });
-                
-                input.addEventListener('blur', function() {
-                    if (focusTime > 0) {
-                        const timeSpent = Date.now() - focusTime;
-                        if (timeSpent > 30000) { // Mais de 30 segundos
-                            analyticsData.difficultyPoints.push({
-                                section: sections[currentSection],
-                                field: this.name || this.id,
-                                timeSpent: timeSpent,
-                                timestamp: Date.now()
-                            });
+                    // Update visual state
+                    const radioGroup = document.querySelectorAll(`input[name="${this.name}"]`);
+                    radioGroup.forEach(r => {
+                        const option = r.closest('.radio-option');
+                        if (r.checked) {
+                            option.classList.add('selected');
+                        } else {
+                            option.classList.remove('selected');
                         }
+                    });
+                });
+            });
+        }
+
+        function setupCantinaCheckboxes() {
+            const cantinaCheckboxes = document.querySelectorAll('input[name="cantina_nao_utiliza"]');
+            cantinaCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const questionCard = this.closest('.question-card');
+                    const radioButtons = questionCard.querySelectorAll('input[type="radio"]');
+                    
+                    if (this.checked) {
+                        // Disable radio buttons when "Não utiliza" is checked
+                        radioButtons.forEach(radio => {
+                            radio.disabled = true;
+                            radio.checked = false;
+                            radio.closest('.radio-option').classList.remove('selected');
+                        });
+                    } else {
+                        // Enable radio buttons when "Não utiliza" is unchecked
+                        radioButtons.forEach(radio => {
+                            radio.disabled = false;
+                        });
                     }
                 });
             });
-            
-            // Rastrear tentativas de abandono
-            let isLeaving = false;
-            window.addEventListener('beforeunload', function(e) {
-                if (!isLeaving && hasUnsavedData()) {
-                    analyticsData.abandonmentPoints.push({
-                        section: sections[currentSection],
-                        timestamp: Date.now(),
-                        progress: (currentSection / sections.length) * 100
-                    });
-                    
-                    // Salvar dados de analytics
-                    saveAnalyticsData();
-                }
-            });
         }
 
-        function trackUserInteraction(type, field, value) {
-            // Registrar interação para analytics
-            const interaction = {
-                type: type,
-                field: field,
-                value: value,
-                section: sections[currentSection],
-                timestamp: Date.now(),
-                timeFromStart: Date.now() - startTime
+        function validateSection(sectionNumber) {
+            const sectionMap = {
+                1: 'section-dados-aluno',
+                2: 'section-professores',
+                3: 'section-cantina', 
+                4: 'section-limpeza',
+                5: 'section-agenda',
+                6: 'section-coordenacao',
+                7: 'section-direcao',
+                8: 'section-recepcao',
+                9: 'section-eventos-pedagogicos',
+                10: 'section-eventos-familiares',
+                11: 'section-seguranca',
+                12: 'section11'
             };
             
-            // Salvar no localStorage para posterior envio
-            let interactions = JSON.parse(localStorage.getItem('questionario_interactions') || '[]');
-            interactions.push(interaction);
-            localStorage.setItem('questionario_interactions', JSON.stringify(interactions));
+            const section = document.getElementById(sectionMap[sectionNumber]);
+            let isValid = true;
+            let firstInvalidField = null;
+
+            // Validação específica para seção Dados do Aluno
+            if (sectionNumber === 1) {
+                const serieValue = serieSelect.value;
+                if (!serieValue) {
+                    isValid = false;
+                    firstInvalidField = serieSelect;
+                } else {
+                    const serieData = seriesData[serieValue];
+                    
+                    // Validar turma se necessário
+                    if (serieData.tipo === 'turma_multipla' && !turmaSelect.value) {
+                        isValid = false;
+                        firstInvalidField = turmaSelect;
+                    }
+                    
+                    // Validar turno se necessário
+                    if (serieData.tipo === 'turno_multiplo' && !turnoSelect.value) {
+                        isValid = false;
+                        firstInvalidField = turnoSelect;
+                    }
+                }
+            } else {
+                // Validação para outras seções
+                const requiredFields = section.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (field.type === 'radio') {
+                        const radioGroup = section.querySelectorAll(`input[name="${field.name}"]`);
+                        const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                        
+                        // Check if "Não utiliza" checkbox is checked for cantina questions
+                        const cantinaCheckbox = section.querySelector(`input[name="cantina_nao_utiliza"][value="${field.name.split('_')[1]}"]`);
+                        const isCantinaExempt = cantinaCheckbox && cantinaCheckbox.checked;
+                        
+                        if (!isChecked && !isCantinaExempt) {
+                            isValid = false;
+                            if (!firstInvalidField) {
+                                firstInvalidField = field.closest('.question-card');
+                            }
+                            // Highlight the question group
+                            const questionCard = field.closest('.question-card');
+                            if (questionCard) {
+                                questionCard.style.borderLeft = '4px solid #dc3545';
+                                setTimeout(() => {
+                                    questionCard.style.borderLeft = '4px solid #4facfe';
+                                }, 3000);
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (firstInvalidField) {
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            return isValid;
         }
 
         function nextSection() {
-            if (validateCurrentSection()) {
-                // Registrar tempo gasto na seção atual
-                const timeSpent = Date.now() - sectionStartTime;
-                analyticsData.timePerSection[sections[currentSection]] = timeSpent;
+            if (!validateSection(currentSection)) {
+                showAlert('Por favor, responda todas as perguntas obrigatórias antes de continuar.', 'danger');
+                return;
+            }
+
+            if (currentSection < totalSections) {
+                // Finalizar tracking da seção atual
+                finalizeSectionTracking();
                 
-                // Avançar para próxima seção
-                document.getElementById(sections[currentSection]).classList.remove('active');
+                // Hide current section
+                const sectionMap = {
+                    1: 'section-dados-aluno',
+                    2: 'section-professores',
+                    3: 'section-cantina', 
+                    4: 'section-limpeza',
+                    5: 'section-agenda',
+                    6: 'section-coordenacao',
+                    7: 'section-direcao',
+                    8: 'section-recepcao',
+                    9: 'section-eventos-pedagogicos',
+                    10: 'section-eventos-familiares',
+                    11: 'section-seguranca',
+                    12: 'section11'
+                };
+                
+                document.getElementById(sectionMap[currentSection]).classList.remove('active');
+                
+                // Show next section
                 currentSection++;
-                document.getElementById(sections[currentSection]).classList.add('active');
+                document.getElementById(sectionMap[currentSection]).classList.add('active');
                 
-                // Resetar timer da seção
-                sectionStartTime = Date.now();
+                // Iniciar tracking da nova seção
+                const newSectionName = getCurrentVisibleSection();
+                if (newSectionName) {
+                    startSectionTracking(newSectionName);
+                }
                 
                 updateProgress();
-                updateSectionProgress();
+                updateSectionIndicators();
                 updateNavigationButtons();
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Save progress
                 saveSessionData();
-                
-                // Scroll para o topo
-                window.scrollTo(0, 0);
-                
-                trackUserInteraction('section_advance', 'navigation', currentSection);
             }
         }
 
         function previousSection() {
-            if (currentSection > 0) {
-                // Registrar tempo gasto na seção atual
-                const timeSpent = Date.now() - sectionStartTime;
-                analyticsData.timePerSection[sections[currentSection]] = timeSpent;
+            if (currentSection > 1) {
+                // Finalizar tracking da seção atual
+                finalizeSectionTracking();
                 
-                // Voltar para seção anterior
-                document.getElementById(sections[currentSection]).classList.remove('active');
+                // Hide current section
+                const sectionMap = {
+                    1: 'section-dados-aluno',
+                    2: 'section-professores',
+                    3: 'section-cantina', 
+                    4: 'section-limpeza',
+                    5: 'section-agenda',
+                    6: 'section-coordenacao',
+                    7: 'section-direcao',
+                    8: 'section-recepcao',
+                    9: 'section-eventos-pedagogicos',
+                    10: 'section-eventos-familiares',
+                    11: 'section-seguranca',
+                    12: 'section11'
+                };
+                
+                document.getElementById(sectionMap[currentSection]).classList.remove('active');
+                
+                // Show previous section
                 currentSection--;
-                document.getElementById(sections[currentSection]).classList.add('active');
+                document.getElementById(sectionMap[currentSection]).classList.add('active');
                 
-                // Resetar timer da seção
-                sectionStartTime = Date.now();
+                // Iniciar tracking da nova seção
+                const newSectionName = getCurrentVisibleSection();
+                if (newSectionName) {
+                    startSectionTracking(newSectionName);
+                }
                 
                 updateProgress();
-                updateSectionProgress();
+                updateSectionIndicators();
                 updateNavigationButtons();
                 
-                // Scroll para o topo
-                window.scrollTo(0, 0);
-                
-                trackUserInteraction('section_back', 'navigation', currentSection);
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }
-
-        function validateCurrentSection() {
-            const currentSectionElement = document.getElementById(sections[currentSection]);
-            const requiredFields = currentSectionElement.querySelectorAll('[required]');
-            let isValid = true;
-            
-            // Validação especial para seção de dados do aluno
-            if (sections[currentSection] === 'section-dados-aluno') {
-                const serie = document.getElementById('serie').value;
-                if (!serie) {
-                    showAlert('Por favor, selecione a série do seu filho(a).', 'danger');
-                    return false;
-                }
-                
-                const serieData = seriesData[serie];
-                if (serieData) {
-                    // Validar campos específicos baseados no tipo de série
-                    if (serieData.tipo === 'turno_multiplo') {
-                        const turno = document.getElementById('turno').value;
-                        if (!turno) {
-                            showAlert('Por favor, selecione o turno.', 'danger');
-                            return false;
-                        }
-                    } else if (serieData.tipo === 'turma_multipla') {
-                        const turma = document.getElementById('turma').value;
-                        if (!turma) {
-                            showAlert('Por favor, selecione a turma.', 'danger');
-                            return false;
-                        }
-                    }
-                }
-                
-                // Verificar se o professor foi preenchido
-                const professorInfo = document.getElementById('professorInfo').textContent;
-                if (professorInfo === "Será preenchido automaticamente após selecionar série e turma" || 
-                    professorInfo === "Selecione uma turma para ver o professor") {
-                    showAlert('Por favor, complete todos os dados do aluno antes de continuar.', 'danger');
-                    return false;
-                }
-                
-                return true;
-            }
-            
-            // Validação padrão para outras seções
-            requiredFields.forEach(field => {
-                if (field.type === 'radio') {
-                    const radioGroup = currentSectionElement.querySelectorAll(`input[name="${field.name}"]`);
-                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
-                    if (!isChecked) {
-                        isValid = false;
-                        showValidationError(`Por favor, responda à pergunta: ${field.closest('.question-card').querySelector('.question-title').textContent}`);
-                    }
-                } else if (!field.value.trim()) {
-                    isValid = false;
-                    showValidationError(`Por favor, preencha o campo: ${field.closest('.question-card').querySelector('.question-title').textContent}`);
-                }
-            });
-            
-            return isValid;
-        }
-
-        function showValidationError(message) {
-            const alertElement = document.getElementById('alertError');
-            alertElement.textContent = message;
-            alertElement.style.display = 'block';
-            
-            setTimeout(() => {
-                alertElement.style.display = 'none';
-            }, 5000);
         }
 
         function updateProgress() {
-            const progress = ((currentSection + 1) / sections.length) * 100;
+            const progress = (currentSection / totalSections) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
             document.getElementById('progressText').textContent = Math.round(progress) + '% concluído';
         }
 
-        function updateSectionProgress() {
+        function updateSectionIndicators() {
             const progressContainer = document.getElementById('sectionProgress');
             progressContainer.innerHTML = '';
             
-            sections.forEach((section, index) => {
+            for (let i = 1; i <= totalSections; i++) {
                 const indicator = document.createElement('div');
                 indicator.className = 'section-indicator';
                 
-                if (index < currentSection) {
+                if (i < currentSection) {
                     indicator.classList.add('completed');
-                } else if (index === currentSection) {
+                } else if (i === currentSection) {
                     indicator.classList.add('current');
                 }
                 
                 progressContainer.appendChild(indicator);
-            });
+            }
         }
 
         function updateNavigationButtons() {
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const submitBtn = document.getElementById('submitBtn');
+            const btnPrevious = document.getElementById('btnPrevious');
+            const btnNext = document.getElementById('btnNext');
+            const btnSubmit = document.getElementById('btnSubmit');
+
+            btnPrevious.style.display = currentSection > 1 ? 'block' : 'none';
             
-            prevBtn.style.display = currentSection === 0 ? 'none' : 'inline-block';
-            
-            if (currentSection === sections.length - 1) {
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'inline-block';
+            if (currentSection === totalSections) {
+                btnNext.style.display = 'none';
+                btnSubmit.style.display = 'block';
             } else {
-                nextBtn.style.display = 'inline-block';
-                submitBtn.style.display = 'none';
+                btnNext.style.display = 'block';
+                btnSubmit.style.display = 'none';
             }
         }
 
-        function updateRadioSelection(selectedRadio) {
-            const radioGroup = document.querySelectorAll(`input[name="${selectedRadio.name}"]`);
-            const radioOptions = document.querySelectorAll(`input[name="${selectedRadio.name}"]`).forEach(radio => {
-                radio.closest('.radio-option').classList.remove('selected');
-            });
-            
-            selectedRadio.closest('.radio-option').classList.add('selected');
-        }
-
-        function handleFormSubmit(e) {
+        function handleSubmit(e) {
             e.preventDefault();
             
-            if (validateCurrentSection()) {
-                // Calcular analytics finais
-                analyticsData.totalTime = Date.now() - startTime;
-                analyticsData.completionRate = 100;
+            // Final validation
+            if (!validateSection(currentSection)) {
+                showAlert('Por favor, responda todas as perguntas obrigatórias antes de enviar.', 'danger');
+                return;
+            }
+
+            // Disable submit button
+            const btnSubmit = document.getElementById('btnSubmit');
+            btnSubmit.disabled = true;
+            
+            // Show loading
+            document.querySelector('.form-container').style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'block';
+            
+            // Collect and send data
+            setTimeout(() => {
+                submitForm();
+            }, 2000); // Simulate processing time
+        }
+
+        function submitForm() {
+            try {
+                const formData = collectFormData();
                 
-                // Coletar todos os dados do formulário
-                const formData = new FormData(this);
-                const questionarioData = {};
+                // Send to webhook
+                sendToWebhook(formData);
                 
-                for (let [key, value] of formData.entries()) {
-                    questionarioData[key] = value;
-                }
+                // Clear session data
+                clearSessionData();
                 
-                // Adicionar dados de analytics
-                questionarioData.analytics = analyticsData;
-                questionarioData.interactions = JSON.parse(localStorage.getItem('questionario_interactions') || '[]');
-                questionarioData.submissionTime = new Date().toISOString();
+                // Show success
+                showSuccess();
                 
-                // Mostrar tela de loading
-                document.querySelector('.form-container').style.display = 'none';
-                document.getElementById('loadingScreen').style.display = 'block';
+            } catch (error) {
+                console.error('Submission error:', error);
+                showAlert('Erro ao enviar questionário. Tente novamente.', 'danger');
                 
-                // Simular envio (aqui você integraria com n8n)
-                setTimeout(() => {
-                    submitToN8N(questionarioData);
-                }, 2000);
+                // Re-enable submit button
+                document.getElementById('btnSubmit').disabled = false;
+                document.querySelector('.form-container').style.display = 'block';
+                document.getElementById('loadingScreen').style.display = 'none';
             }
         }
 
-        function submitToN8N(data) {
-            // URL do webhook do n8n (substitua pela URL real)
-            const n8nWebhookUrl = 'https://n8n.escolaamadeus.com/webhook-test/questionario-satisfacao';
+        function collectFormData() {
+            const form = document.getElementById('questionarioForm');
+            const formData = new FormData(form);
             
-            fetch(n8nWebhookUrl, {
+            // Get cantina "não utiliza" checkboxes
+            const cantinaCheckboxes = document.querySelectorAll('input[name="cantina_nao_utiliza"]:checked');
+            const naoUtilizaCantina = cantinaCheckboxes.length > 0;
+            
+            // Coletar dados específicos do aluno
+            const dadosAluno = collectDadosAlunoData();
+            
+            // Coletar dados de analytics
+            const analyticsData = getAnalyticsData();
+            
+            // Structure data according to specification
+            const data = {
+                metadata: {
+                    timestamp: new Date().toISOString(),
+                    questionario_tipo: "satisfacao_escolar",
+                    semestre: "1º Semestre 2025",
+                    versao: "v1.0",
+                    anonimo: true,
+                    analytics: analyticsData
+                },
+                dados_aluno: dadosAluno,
+                respostas: {
+                    professores: {
+                        desempenho_geral: parseInt(formData.get('professores_desempenho')) || 0,
+                        relacao_alunos: parseInt(formData.get('professores_relacao')) || 0,
+                        comunicacao_pais: parseInt(formData.get('professores_comunicacao')) || 0,
+                        aprendizado_desenvolvimento: parseInt(formData.get('professores_aprendizado')) || 0,
+                        comentarios: formData.get('professores_comentarios') || ""
+                    },
+                    cantina: {
+                        qualidade_alimentos: parseInt(formData.get('cantina_qualidade')) || 0,
+                        variedade_cardapio: parseInt(formData.get('cantina_variedade')) || 0,
+                        precos: parseInt(formData.get('cantina_precos')) || 0,
+                        limpeza_higiene: parseInt(formData.get('cantina_limpeza')) || 0,
+                        nao_utiliza: naoUtilizaCantina,
+                        comentarios: formData.get('cantina_comentarios') || ""
+                    },
+                    limpeza_escola: {
+                        salas_aula: parseInt(formData.get('limpeza_salas')) || 0,
+                        banheiros: parseInt(formData.get('limpeza_banheiros')) || 0,
+                        areas_comuns: parseInt(formData.get('limpeza_areas')) || 0,
+                        comentarios: formData.get('limpeza_comentarios') || ""
+                    },
+                    agenda_edu: {
+                        facilidade_acesso: parseInt(formData.get('agenda_acesso')) || 0,
+                        utilidade_informacoes: parseInt(formData.get('agenda_utilidade')) || 0,
+                        frequencia_atualizacao: parseInt(formData.get('agenda_frequencia')) || 0,
+                        comentarios: formData.get('agenda_comentarios') || ""
+                    },
+                    coordenacao: {
+                        tratamento: parseInt(formData.get('coord_tratamento')) || 0,
+                        disponibilidade: parseInt(formData.get('coord_disponibilidade')) || 0,
+                        comunicacao_familia: parseInt(formData.get('coord_comunicacao')) || 0,
+                        comentarios: formData.get('coord_comentarios') || ""
+                    },
+                    direcao: {
+                        tratamento: parseInt(formData.get('direcao_tratamento')) || 0,
+                        disponibilidade: parseInt(formData.get('direcao_disponibilidade')) || 0,
+                        comunicacao_familia: parseInt(formData.get('direcao_comunicacao')) || 0,
+                        comentarios: formData.get('direcao_comentarios') || ""
+                    },
+                    recepcao: {
+                        cordialidade_eficiencia: parseInt(formData.get('recepcao_atendimento')) || 0,
+                        comentarios: formData.get('recepcao_comentarios') || ""
+                    },
+                    eventos_pedagogicos: {
+                        organizacao: parseInt(formData.get('eventos_ped_organizacao')) || 0,
+                        qualidade: parseInt(formData.get('eventos_ped_qualidade')) || 0,
+                        comentarios: formData.get('eventos_ped_comentarios') || ""
+                    },
+                    eventos_familiares: {
+                        organizacao: parseInt(formData.get('eventos_fam_organizacao')) || 0,
+                        qualidade: parseInt(formData.get('eventos_fam_qualidade')) || 0,
+                        comentarios: formData.get('eventos_fam_comentarios') || ""
+                    },
+                    seguranca: {
+                        sentimento_seguranca: parseInt(formData.get('seguranca_sentimento')) || 0,
+                        instalacoes: parseInt(formData.get('seguranca_instalacoes')) || 0,
+                        controle_acesso: parseInt(formData.get('seguranca_controle')) || 0,
+                        comentarios: formData.get('seguranca_comentarios') || ""
+                    },
+                    comentarios_gerais: formData.get('comentarios_gerais') || ""
+                }
+            };
+            
+            return data;
+        }
+
+        function collectDadosAlunoData() {
+            const serieValue = serieSelect.value;
+            if (!serieValue) return {};
+
+            const serieData = seriesData[serieValue];
+            
+            let dadosAluno = {
+                serie: serieData.nome,
+                serie_codigo: serieValue
+            };
+
+            if (serieData.tipo === 'automatico') {
+                dadosAluno.turma = serieData.turma || "";
+                dadosAluno.turno = serieData.turno;
+                dadosAluno.professor = serieData.professor;
+            } else if (serieData.tipo === 'turno_multiplo') {
+                dadosAluno.turma = "";
+                dadosAluno.turno = turnoSelect.options[turnoSelect.selectedIndex]?.textContent || "";
+                dadosAluno.professor = serieData.professor;
+            } else if (serieData.tipo === 'turma_multipla') {
+                const selectedOption = turmaSelect.options[turmaSelect.selectedIndex];
+                dadosAluno.turma = turmaSelect.value;
+                dadosAluno.turno = selectedOption?.dataset.turno || "";
+                dadosAluno.professor = selectedOption?.dataset.professor || "";
+            }
+
+            return dadosAluno;
+        }
+
+        function sendToWebhook(data) {
+            // Replace with actual webhook URL
+            //const webhookUrl = 'https://webhook.escolaamadeus.com/webhook/questionario-satisfacao';
+            const webhookUrl = 'https://n8n.escolaamadeus.com/webhook-test/questionario-satisfacao'; 
+            // Debug: ver dados no console
+            console.log('Dados enviados:', data);
+            
+            fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -2451,115 +1978,98 @@
                 body: JSON.stringify(data)
             })
             .then(response => {
-                if (response.ok) {
-                    showSuccessScreen();
-                    clearSessionData();
-                    clearAnalyticsData();
-                } else {
-                    throw new Error('Erro no envio');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                return response.json();
+            })
+            .then(result => {
+                console.log('Success:', result);
             })
             .catch(error => {
-                console.error('Erro ao enviar questionário:', error);
-                // Em caso de erro, ainda mostrar sucesso para o usuário
-                // mas salvar dados localmente para reenvio posterior
-                showSuccessScreen();
-                saveForRetry(data);
+                console.error('Error:', error);
+                jsErrors.push('Erro no envio: ' + error.message);
+                // In production, you might want to store data locally and retry later
             });
         }
 
-        function showSuccessScreen() {
+        function showSuccess() {
             document.getElementById('loadingScreen').style.display = 'none';
             document.getElementById('successScreen').style.display = 'block';
         }
 
+        function showAlert(message, type) {
+            const alertElement = document.getElementById('alert' + (type === 'danger' ? 'Error' : 'Success'));
+            alertElement.textContent = message;
+            alertElement.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                alertElement.style.display = 'none';
+            }, 5000);
+            
+            // Scroll to top to show alert
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function saveSessionData() {
             const formData = new FormData(document.getElementById('questionarioForm'));
-            const sessionData = {
-                currentSection: currentSection,
-                startTime: startTime,
-                formData: {}
-            };
+            const data = {};
             
             for (let [key, value] of formData.entries()) {
-                sessionData.formData[key] = value;
+                data[key] = value;
             }
             
-            // Salvar dados de radio buttons
-            const radioButtons = document.querySelectorAll('input[type="radio"]:checked');
-            radioButtons.forEach(radio => {
-                sessionData.formData[radio.name] = radio.value;
-            });
+            data.currentSection = currentSection;
+            data.startTime = startTime;
             
-            localStorage.setItem('questionario_satisfacao_session', JSON.stringify(sessionData));
+            localStorage.setItem('questionario_satisfacao_session', JSON.stringify(data));
         }
 
         function loadSessionData() {
-            const sessionData = localStorage.getItem('questionario_satisfacao_session');
-            if (sessionData) {
+            const savedData = localStorage.getItem('questionario_satisfacao_session');
+            
+            if (savedData) {
                 try {
-                    const data = JSON.parse(sessionData);
+                    const data = JSON.parse(savedData);
                     
-                    // Restaurar seção atual
-                    if (data.currentSection && data.currentSection < sections.length) {
-                        document.getElementById(sections[currentSection]).classList.remove('active');
-                        currentSection = data.currentSection;
-                        document.getElementById(sections[currentSection]).classList.add('active');
-                        updateNavigationButtons();
-                    }
-                    
-                    // Restaurar dados do formulário
-                    Object.keys(data.formData).forEach(key => {
-                        const field = document.querySelector(`[name="${key}"]`);
-                        if (field) {
-                            if (field.type === 'radio') {
-                                const radio = document.querySelector(`input[name="${key}"][value="${data.formData[key]}"]`);
-                                if (radio) {
-                                    radio.checked = true;
-                                    radio.dispatchEvent(new Event('change'));
+                    // Restore form data
+                    Object.keys(data).forEach(key => {
+                        if (key !== 'currentSection' && key !== 'startTime') {
+                            const field = document.querySelector(`[name="${key}"]`);
+                            if (field) {
+                                if (field.type === 'radio') {
+                                    const radio = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
+                                    if (radio) {
+                                        radio.checked = true;
+                                        radio.dispatchEvent(new Event('change'));
+                                    }
+                                } else if (field.type === 'checkbox') {
+                                    field.checked = data[key] === 'on';
+                                    field.dispatchEvent(new Event('change'));
+                                } else {
+                                    field.value = data[key];
+                                    if (field.id === 'serie') {
+                                        field.dispatchEvent(new Event('change'));
+                                    }
                                 }
-                            } else if (field.type === 'checkbox') {
-                                field.checked = data.formData[key] === 'on';
-                                field.dispatchEvent(new Event('change'));
-                            } else {
-                                field.value = data.formData[key];
                             }
                         }
                     });
                     
-                    // Restaurar informações da sessão
+                    // Restore session info
                     if (data.startTime) {
                         startTime = data.startTime;
                     }
                     
                 } catch (error) {
-                    console.error('Erro ao carregar dados da sessão:', error);
+                    console.error('Error loading session data:', error);
                 }
             }
         }
 
         function clearSessionData() {
             localStorage.removeItem('questionario_satisfacao_session');
-        }
-
-        function saveAnalyticsData() {
-            localStorage.setItem('questionario_analytics', JSON.stringify(analyticsData));
-        }
-
-        function clearAnalyticsData() {
-            localStorage.removeItem('questionario_analytics');
-            localStorage.removeItem('questionario_interactions');
-        }
-
-        function saveForRetry(data) {
-            // Salvar dados para reenvio posterior em caso de falha
-            let retryQueue = JSON.parse(localStorage.getItem('questionario_retry_queue') || '[]');
-            retryQueue.push({
-                data: data,
-                timestamp: Date.now(),
-                attempts: 0
-            });
-            localStorage.setItem('questionario_retry_queue', JSON.stringify(retryQueue));
         }
 
         function hasUnsavedData() {
@@ -2571,16 +2081,648 @@
                     return true;
                 } else if (input.type === 'checkbox' && input.checked) {
                     return true;
-                } else if ((input.type === 'text' || input.tagName === 'TEXTAREA' || input.tagName === 'SELECT') && input.value.trim() !== '') {
+                } else if ((input.type === 'textarea' || input.tagName === 'SELECT') && input.value.trim() !== '') {
                     return true;
                 }
             }
             return false;
         }
 
-        // Inicializar botões de navegação
+        // Initialize navigation buttons
         updateNavigationButtons();
     </script>
 </body>
-</html>
+</html>eito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">1.2. A relação dos professores com os alunos <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="prof_relacao_1" name="professores_relacao" value="1" required>
+                                <label for="prof_relacao_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_relacao_2" name="professores_relacao" value="2">
+                                <label for="prof_relacao_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_relacao_3" name="professores_relacao" value="3">
+                                <label for="prof_relacao_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_relacao_4" name="professores_relacao" value="4">
+                                <label for="prof_relacao_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">1.3. A comunicação dos professores com os pais <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="prof_comunicacao_1" name="professores_comunicacao" value="1" required>
+                                <label for="prof_comunicacao_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_comunicacao_2" name="professores_comunicacao" value="2">
+                                <label for="prof_comunicacao_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_comunicacao_3" name="professores_comunicacao" value="3">
+                                <label for="prof_comunicacao_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_comunicacao_4" name="professores_comunicacao" value="4">
+                                <label for="prof_comunicacao_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">1.4. Aprendizado e desenvolvimento dos alunos <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="prof_aprendizado_1" name="professores_aprendizado" value="1" required>
+                                <label for="prof_aprendizado_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_aprendizado_2" name="professores_aprendizado" value="2">
+                                <label for="prof_aprendizado_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_aprendizado_3" name="professores_aprendizado" value="3">
+                                <label for="prof_aprendizado_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="prof_aprendizado_4" name="professores_aprendizado" value="4">
+                                <label for="prof_aprendizado_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="textarea-container">
+                        <label class="textarea-label" for="professores_comentarios">
+                            Espaço para comentários ou sugestões sobre Professores: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="professores_comentarios" name="professores_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre os professores..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção 2: Cantina -->
+                <div class="section" id="section-cantina">
+                    <div class="section-header">
+                        <div class="section-icon">🍽️</div>
+                        <div class="section-title">Cantina</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">2.1. A qualidade dos alimentos oferecidos <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_qualidade_1" name="cantina_qualidade" value="1" required>
+                                <label for="cantina_qualidade_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_qualidade_2" name="cantina_qualidade" value="2">
+                                <label for="cantina_qualidade_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_qualidade_3" name="cantina_qualidade" value="3">
+                                <label for="cantina_qualidade_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_qualidade_4" name="cantina_qualidade" value="4">
+                                <label for="cantina_qualidade_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="cantina_nao_utiliza_1" name="cantina_nao_utiliza" value="qualidade">
+                            <label for="cantina_nao_utiliza_1">☐ Não utiliza a cantina</label>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">2.2. A variedade do cardápio <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_variedade_1" name="cantina_variedade" value="1" required>
+                                <label for="cantina_variedade_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_variedade_2" name="cantina_variedade" value="2">
+                                <label for="cantina_variedade_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_variedade_3" name="cantina_variedade" value="3">
+                                <label for="cantina_variedade_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_variedade_4" name="cantina_variedade" value="4">
+                                <label for="cantina_variedade_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="cantina_nao_utiliza_2" name="cantina_nao_utiliza" value="variedade">
+                            <label for="cantina_nao_utiliza_2">☐ Não utiliza a cantina</label>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">2.3. Os preços praticados na cantina <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_precos_1" name="cantina_precos" value="1" required>
+                                <label for="cantina_precos_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_precos_2" name="cantina_precos" value="2">
+                                <label for="cantina_precos_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_precos_3" name="cantina_precos" value="3">
+                                <label for="cantina_precos_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_precos_4" name="cantina_precos" value="4">
+                                <label for="cantina_precos_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="cantina_nao_utiliza_3" name="cantina_nao_utiliza" value="precos">
+                            <label for="cantina_nao_utiliza_3">☐ Não utiliza a cantina</label>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">2.4. A limpeza e higiene da cantina <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_limpeza_1" name="cantina_limpeza" value="1" required>
+                                <label for="cantina_limpeza_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_limpeza_2" name="cantina_limpeza" value="2">
+                                <label for="cantina_limpeza_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_limpeza_3" name="cantina_limpeza" value="3">
+                                <label for="cantina_limpeza_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="cantina_limpeza_4" name="cantina_limpeza" value="4">
+                                <label for="cantina_limpeza_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="cantina_nao_utiliza_4" name="cantina_nao_utiliza" value="limpeza">
+                            <label for="cantina_nao_utiliza_4">☐ Não utiliza a cantina</label>
+                        </div>
+                    </div>
+
+                    <div class="textarea-container">
+                        <label class="textarea-label" for="cantina_comentarios">
+                            Espaço para comentários ou sugestões sobre Cantina: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="cantina_comentarios" name="cantina_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a cantina..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção 3: Limpeza da Escola -->
+                <div class="section" id="section-limpeza">
+                    <div class="section-header">
+                        <div class="section-icon">🧹</div>
+                        <div class="section-title">Limpeza da Escola</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">3.1. A limpeza das salas de aula <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_salas_1" name="limpeza_salas" value="1" required>
+                                <label for="limpeza_salas_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_salas_2" name="limpeza_salas" value="2">
+                                <label for="limpeza_salas_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_salas_3" name="limpeza_salas" value="3">
+                                <label for="limpeza_salas_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_salas_4" name="limpeza_salas" value="4">
+                                <label for="limpeza_salas_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">3.2. A limpeza dos banheiros <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_banheiros_1" name="limpeza_banheiros" value="1" required>
+                                <label for="limpeza_banheiros_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_banheiros_2" name="limpeza_banheiros" value="2">
+                                <label for="limpeza_banheiros_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_banheiros_3" name="limpeza_banheiros" value="3">
+                                <label for="limpeza_banheiros_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_banheiros_4" name="limpeza_banheiros" value="4">
+                                <label for="limpeza_banheiros_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">3.3. A limpeza das áreas comuns (pátios, corredores, etc.) <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_areas_1" name="limpeza_areas" value="1" required>
+                                <label for="limpeza_areas_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_areas_2" name="limpeza_areas" value="2">
+                                <label for="limpeza_areas_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_areas_3" name="limpeza_areas" value="3">
+                                <label for="limpeza_areas_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="limpeza_areas_4" name="limpeza_areas" value="4">
+                                <label for="limpeza_areas_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="textarea-container">
+                        <label class="textarea-label" for="limpeza_comentarios">
+                            Espaço para comentários ou sugestões sobre Limpeza da Escola: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="limpeza_comentarios" name="limpeza_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a limpeza da escola..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção 4: Agenda Edu -->
+                <div class="section" id="section-agenda">
+                    <div class="section-header">
+                        <div class="section-icon">📱</div>
+                        <div class="section-title">Agenda Edu</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">4.1. A facilidade de acesso e uso da Agenda Edu <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_acesso_1" name="agenda_acesso" value="1" required>
+                                <label for="agenda_acesso_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_acesso_2" name="agenda_acesso" value="2">
+                                <label for="agenda_acesso_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_acesso_3" name="agenda_acesso" value="3">
+                                <label for="agenda_acesso_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_acesso_4" name="agenda_acesso" value="4">
+                                <label for="agenda_acesso_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">4.2. A utilidade das informações disponibilizadas na Agenda Edu <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_utilidade_1" name="agenda_utilidade" value="1" required>
+                                <label for="agenda_utilidade_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_utilidade_2" name="agenda_utilidade" value="2">
+                                <label for="agenda_utilidade_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_utilidade_3" name="agenda_utilidade" value="3">
+                                <label for="agenda_utilidade_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_utilidade_4" name="agenda_utilidade" value="4">
+                                <label for="agenda_utilidade_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">4.3. A frequência de atualização da Agenda Edu <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_frequencia_1" name="agenda_frequencia" value="1" required>
+                                <label for="agenda_frequencia_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_frequencia_2" name="agenda_frequencia" value="2">
+                                <label for="agenda_frequencia_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_frequencia_3" name="agenda_frequencia" value="3">
+                                <label for="agenda_frequencia_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="agenda_frequencia_4" name="agenda_frequencia" value="4">
+                                <label for="agenda_frequencia_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="textarea-container">
+                        <label class="textarea-label" for="agenda_comentarios">
+                            Espaço para comentários ou sugestões sobre Agenda Edu: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="agenda_comentarios" name="agenda_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a Agenda Edu..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção 5: Coordenação -->
+                <div class="section" id="section-coordenacao">
+                    <div class="section-header">
+                        <div class="section-icon">👥</div>
+                        <div class="section-title">Coordenação</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">5.1. O tratamento da coordenação pedagógica <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="coord_tratamento_1" name="coord_tratamento" value="1" required>
+                                <label for="coord_tratamento_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_tratamento_2" name="coord_tratamento" value="2">
+                                <label for="coord_tratamento_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_tratamento_3" name="coord_tratamento" value="3">
+                                <label for="coord_tratamento_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_tratamento_4" name="coord_tratamento" value="4">
+                                <label for="coord_tratamento_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">5.2. A disponibilidade da coordenação pedagógica <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="coord_disponibilidade_1" name="coord_disponibilidade" value="1" required>
+                                <label for="coord_disponibilidade_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_disponibilidade_2" name="coord_disponibilidade" value="2">
+                                <label for="coord_disponibilidade_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_disponibilidade_3" name="coord_disponibilidade" value="3">
+                                <label for="coord_disponibilidade_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_disponibilidade_4" name="coord_disponibilidade" value="4">
+                                <label for="coord_disponibilidade_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">5.3. Comunicação escola e família pela coordenação <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="coord_comunicacao_1" name="coord_comunicacao" value="1" required>
+                                <label for="coord_comunicacao_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_comunicacao_2" name="coord_comunicacao" value="2">
+                                <label for="coord_comunicacao_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_comunicacao_3" name="coord_comunicacao" value="3">
+                                <label for="coord_comunicacao_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="coord_comunicacao_4" name="coord_comunicacao" value="4">
+                                <label for="coord_comunicacao_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="textarea-container">
+                        <label class="textarea-label" for="coord_comentarios">
+                            Espaço para comentários ou sugestões sobre Coordenação: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="coord_comentarios" name="coord_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a coordenação..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção 6: Direção -->
+                <div class="section" id="section-direcao">
+                    <div class="section-header">
+                        <div class="section-icon">🏛️</div>
+                        <div class="section-title">Direção</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">6.1. O tratamento da direção da escola <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_tratamento_1" name="direcao_tratamento" value="1" required>
+                                <label for="direcao_tratamento_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_tratamento_2" name="direcao_tratamento" value="2">
+                                <label for="direcao_tratamento_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_tratamento_3" name="direcao_tratamento" value="3">
+                                <label for="direcao_tratamento_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_tratamento_4" name="direcao_tratamento" value="4">
+                                <label for="direcao_tratamento_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">6.2. A disponibilidade da direção da escola <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_disponibilidade_1" name="direcao_disponibilidade" value="1" required>
+                                <label for="direcao_disponibilidade_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_disponibilidade_2" name="direcao_disponibilidade" value="2">
+                                <label for="direcao_disponibilidade_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_disponibilidade_3" name="direcao_disponibilidade" value="3">
+                                <label for="direcao_disponibilidade_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_disponibilidade_4" name="direcao_disponibilidade" value="4">
+                                <label for="direcao_disponibilidade_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">6.3. Comunicação escola e família pela direção <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_comunicacao_1" name="direcao_comunicacao" value="1" required>
+                                <label for="direcao_comunicacao_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_comunicacao_2" name="direcao_comunicacao" value="2">
+                                <label for="direcao_comunicacao_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_comunicacao_3" name="direcao_comunicacao" value="3">
+                                <label for="direcao_comunicacao_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="direcao_comunicacao_4" name="direcao_comunicacao" value="4">
+                                <label for="direcao_comunicacao_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisfeito</span>
+                            <span>Muito satisfeito</span>
+                        </div>
+                    </div>
+
+                    <div class="textarea-container">
+                        <label class="textarea-label" for="direcao_comentarios">
+                            Espaço para comentários ou sugestões sobre Direção: <span class="optional-indicator">(opcional)</span>
+                        </label>
+                        <textarea id="direcao_comentarios" name="direcao_comentarios" class="textarea" 
+                                  placeholder="Compartilhe seus comentários ou sugestões sobre a direção..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção 7: Recepção -->
+                <div class="section" id="section-recepcao">
+                    <div class="section-header">
+                        <div class="section-icon">🏢</div>
+                        <div class="section-title">Recepção</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">7.1. A cordialidade e eficiência do atendimento na recepção da escola <span class="required-indicator">*</span></div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="recepcao_atendimento_1" name="recepcao_atendimento" value="1" required>
+                                <label for="recepcao_atendimento_1">1</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="recepcao_atendimento_2" name="recepcao_atendimento" value="2">
+                                <label for="recepcao_atendimento_2">2</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="recepcao_atendimento_3" name="recepcao_atendimento" value="3">
+                                <label for="recepcao_atendimento_3">3</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="recepcao_atendimento_4" name="recepcao_atendimento" value="4">
+                                <label for="recepcao_atendimento_4">4</label>
+                            </div>
+                        </div>
+                        <div class="scale-legend">
+                            <span>Insatisf
 
