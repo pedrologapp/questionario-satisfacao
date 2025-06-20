@@ -603,7 +603,7 @@
                         </div>
                     </div>
 
-                    <div class="question-card">
+                    <div class="question-card" id="professora-card">
                         <div class="question-title">Professora <span class="required-indicator">*</span></div>
                         <div class="textarea-container">
                             <select class="textarea" name="professora" required>
@@ -2284,8 +2284,49 @@
 
         // Form submission handler
         document.getElementById('questionarioForm').addEventListener('submit', handleSubmit);
+
+        // Função para controlar a visibilidade do campo professora baseado na série selecionada
+        function toggleProfessoraField() {
+            const serieSelect = document.querySelector('select[name="serie"]');
+            const professoraCard = document.getElementById('professora-card');
+            const professoraSelect = document.querySelector('select[name="professora"]');
+            
+            if (serieSelect && professoraCard && professoraSelect) {
+                const selectedSerie = serieSelect.value;
+                
+                // Séries que NÃO precisam de professora (apenas 6º, 7º, 8º e 9º ano)
+                const seriesSemProfessora = [
+                    '6 ano', '7 ano', '8 ano', '9 ano'
+                ];
+                
+                // Verifica se a série selecionada está na lista de séries sem professora
+                const needsProfessora = !seriesSemProfessora.some(serie => selectedSerie.includes(serie));
+                
+                if (needsProfessora) {
+                    // Mostra o campo professora e torna obrigatório
+                    professoraCard.style.display = 'block';
+                    professoraSelect.required = true;
+                } else {
+                    // Esconde o campo professora e remove a obrigatoriedade
+                    professoraCard.style.display = 'none';
+                    professoraSelect.required = false;
+                    professoraSelect.value = ''; // Limpa a seleção
+                }
+            }
+        }
+
+        // Adiciona o event listener para o campo série
+        document.addEventListener('DOMContentLoaded', function() {
+            const serieSelect = document.querySelector('select[name="serie"]');
+            if (serieSelect) {
+                serieSelect.addEventListener('change', toggleProfessoraField);
+                // Executa uma vez no carregamento da página
+                toggleProfessoraField();
+            }
+        });
     </script>
 </body>
 </html>
+
 
 
